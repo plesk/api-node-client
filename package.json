@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Plesk XML-RPC API Client",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plesk/api-node-client.git"
+  },
   "author": "Alexei Yuzhakov",
   "license": "Apache-2.0",
   "dependencies": {
