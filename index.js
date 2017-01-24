@@ -20,7 +20,7 @@ class Client {
 
   request(body, callback) {
     let headers = {
-      'Content-type': 'text/xml',
+      'Content-Type': 'text/xml',
       'HTTP_PRETTY_PRINT': 'TRUE'
     };
 
