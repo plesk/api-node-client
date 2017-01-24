@@ -40,14 +40,19 @@ class Client {
       headers: headers
     };
 
-    const client = 'https' == this._protocol ? https : http;
-    const request = client.request(options, (response) => {
-      let result = '';
-      response.on('data', (chunk) => result += chunk);
-      response.on('end', () => callback(result));
+    const promise = new Promise((resolve, reject) => {
+      const client = 'https' == this._protocol ? https : http;
+      const request = client.request(options, (response) => {
+        let result = '';
+        response.on('data', (chunk) => result += chunk);
+        response.on('end', () => resolve(result));
+      });
+      request.on('error', (error) => reject(error));
+      request.write(body);
+      request.end();
     });
-    request.write(body);
-    request.end();
+
+    return (callback) ? promise.then(callback) : promise;
   }
 
 }
