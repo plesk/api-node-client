@@ -21,7 +21,8 @@ class Client {
   request(body, callback) {
     let headers = {
       'Content-Type': 'text/xml',
-      'HTTP_PRETTY_PRINT': 'TRUE'
+      'HTTP_PRETTY_PRINT': 'TRUE',
+      'Content-Length': body.length
     };
 
     if (this._secretKey) {
