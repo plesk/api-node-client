@@ -1,6 +1,6 @@
 {
   "name": "plesk-api-client",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Plesk XML-RPC API Client",
   "main": "index.js",
   "repository": {
