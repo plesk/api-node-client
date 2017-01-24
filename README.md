@@ -11,7 +11,7 @@ npm install --save plesk-api-client
 ```javascript
 const pleskApi = require('plesk-api-client');
 ...
-let client = new pleskApi.Client(host);
+const client = new pleskApi.Client(host);
 client.setCredentials(login, password);
 client.request(request, (response) => {
     ...

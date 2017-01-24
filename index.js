@@ -32,7 +32,7 @@ class Client {
       headers['HTTP_AUTH_PASSWD'] = this._password;
     }
 
-    let options = {
+    const options = {
       host: this._host,
       port: this._port,
       path: '/enterprise/control/agent.php',
@@ -40,14 +40,12 @@ class Client {
       headers: headers
     };
 
-    let handler = (response) => {
+    const client = 'https' == this._protocol ? https : http;
+    const request = client.request(options, (response) => {
       let result = '';
       response.on('data', (chunk) => result += chunk);
       response.on('end', () => callback(result));
-    };
-
-    let client = 'https' == this._protocol ? https : http;
-    let request = client.request(options, handler);
+    });
     request.write(body);
     request.end();
   }
